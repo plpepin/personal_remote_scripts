@@ -78,7 +78,7 @@ function handleUserWhoPostedClickEvent(e){
     
     matching_items = document.querySelectorAll( selector );
     matching_items.forEach(function(item){
-        item.classList.add("show");
+        item.classList.remove("hide");
     });
     document.querySelectorAll('.soundList__item:not('+selector+')').forEach(function(siblings){
         siblings.classList.add("hide");
