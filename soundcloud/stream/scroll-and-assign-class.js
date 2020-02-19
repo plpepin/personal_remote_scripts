@@ -3,7 +3,8 @@ var node_html = document.documentElement,
 
 var htmlDoc = document.documentElement,
     htmlBody = document.querySelector('body'),
-    container = null;
+    container = null,
+    buttons_class = "sc-button sc-button-medium sc-button-responsive";
 
 container = createContainer();
 
@@ -21,7 +22,7 @@ nodeList_scItems.forEach( (item) => {
     // Assign new class to parent (item)
     item.classList.add( username_handle );
     
-    addButtonTo( container, username_handle, username );
+    addButtonTo( container, username_handle, buttons_class, username );
 
 });
 
@@ -32,11 +33,12 @@ function createContainer(){
   return div;
 }
 
-function addButtonTo( parent_node, id, label ){
+function addButtonTo( parent_node, id, class, label ){
   var btn = document.createElement("button"),
       btn_label = document.createTextNode(label);
   
   btn.id=id;
+  btn.class=class;
   btn.appendChild( btn_label );
   
   if ( parent_node )
