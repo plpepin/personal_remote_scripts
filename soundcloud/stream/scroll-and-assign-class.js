@@ -33,7 +33,7 @@ function createContainer(){
   return div;
 }
 
-function addButtonTo( parent_node, id, class, label ){
+function addButtonTo( parent_node, id, classname, label ){
   var btn = document.createElement("button"),
       btn_label = document.createTextNode(label);
   
