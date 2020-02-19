@@ -10,7 +10,7 @@ nodeList_scItems.forEach( (item) => {
     // Create a classname using the user url page minus the '/' prefix 
     username_handle = item.querySelector('.g-avatar-badge-avatar-link').pathname.substring(1);
     
-    console.log(username_handle);
+    console.log("username_handle class", username_handle);
     
     // Assign new class to parent (item)
     item.classList.add( username_handle );
