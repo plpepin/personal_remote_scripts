@@ -11,7 +11,7 @@ nodeList_scItems.forEach( (item) => {
     username_handle = item.querySelector('.g-avatar-badge-avatar-link').pathname.substring(1);
     
     // Assign new class to parent (item)
-    item.classList.add('magicianonduty');
+    item.classList.add( username_handle );
 
 });
 
