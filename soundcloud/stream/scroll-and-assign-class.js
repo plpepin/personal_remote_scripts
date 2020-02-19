@@ -33,12 +33,21 @@ function createContainer(){
   return div;
 }
 
+function handleUserWhoPostedClickEvent(e){
+    var matching_items = document.querySelectorAll( "." + e.target.className );
+    console.log(matching_items);
+    //this.classname.add("show");
+    //matching_items.classname.add("show");
+}
+
 function addButtonTo( parent_node, id, classname, label ){
   var btn = document.createElement("button"),
       btn_label = document.createTextNode(label);
   
   btn.id=id;
   btn.class=classname;
+  btn.addEventListener("click", handleUserWhoPostedClickEvent );
+   
   btn.appendChild( btn_label );
   
   if ( parent_node )
