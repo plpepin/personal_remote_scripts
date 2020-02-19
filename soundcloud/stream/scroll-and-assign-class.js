@@ -1,5 +1,6 @@
 var node_html = document.documentElement,
-    nodeList_scItems = node_html.querySelectorAll('.soundList__item');  // All first 10 items
+    nodeList_scList = node_html.querySelectorAll('.stream__list');
+    htmlColl_scItems = nodeList_scList.item(0).getElementsByClassName('soundList__item')  // All first 10 items
 
 var htmlDoc = document.documentElement,
     htmlBody = document.querySelector('body'),
@@ -9,10 +10,38 @@ var htmlDoc = document.documentElement,
 
 container = createContainer();
 
-// Cycle thru all 10 items
+var targetNode = document.querySelector("#someElement");
+var observerOptions = {
+  childList: true,
+  attributes: true,
+  subtree: true //Omit or set to false to observe only changes to the parent node.
+}
 
+var observer = new MutationObserver(callback);
+observer.observe(nodeList_scList, observerOptions);
+
+function callback(mutationList, observer) {
+  mutationList.forEach((mutation) => {
+    switch(mutation.type) {
+      case 'childList':
+        /* One or more children have been added to and/or removed
+           from the tree; see mutation.addedNodes and
+           mutation.removedNodes */
+            initOrUpdateUserButtons();
+        break;
+      case 'attributes':
+        /* An attribute value changed on the element in
+           mutation.target; the attribute name is in
+           mutation.attributeName and its previous value is in
+           mutation.oldValue */
+        break;
+    }
+  });
+}
+
+// Cycle thru all 10 items
 function initOrUpdateUserButtons() {
-    nodeList_scItems.forEach( (item) => {
+    htmlColl_scItems.forEach( (item) => {
 
         // Get the user who posted current item (track) to the stream..
         username = item.querySelector('.soundContext__usernameLink').text;
@@ -74,7 +103,7 @@ function addButtonTo( parent_node, id, classname, label ){
 }
 
 // Scroll page to get 10 more items. We grab the height of the entire and scroll by that amount.. 
-// intListHeight = nodeList_scItems.scrollHeight;
+// intListHeight = htmlColl_scItems.scrollHeight;
 // node_html.scrollBy(0, intListHeight)
 // returns integer
 
