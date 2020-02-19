@@ -1,6 +1,5 @@
 var node_html = document.documentElement,
-    nodeList_scList = node_html.querySelectorAll('.stream__list');
-    htmlColl_scItems = nodeList_scList.item(0).getElementsByClassName('soundList__item')  // All first 10 items
+    nodeList_scList = node_html.querySelector('.stream__list');
 
 var htmlDoc = document.documentElement,
     htmlBody = document.querySelector('body'),
@@ -10,7 +9,6 @@ var htmlDoc = document.documentElement,
 
 container = createContainer();
 
-var targetNode = document.querySelector("#someElement");
 var observerOptions = {
   childList: true,
   attributes: true,
@@ -41,6 +39,7 @@ function callback(mutationList, observer) {
 
 // Cycle thru all 10 items
 function initOrUpdateUserButtons() {
+    htmlColl_scItems = nodeList_scList.querySelectorAll('.soundList__item');
     htmlColl_scItems.forEach( (item) => {
 
         // Get the user who posted current item (track) to the stream..
