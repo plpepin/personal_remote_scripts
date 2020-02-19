@@ -1,6 +1,12 @@
 var node_html = document.documentElement,
     nodeList_scItems = node_html.querySelectorAll('.soundList__item');  // All first 10 items
 
+var htmlDoc = document.documentElement,
+    htmlBody = document.querySelector('body'),
+    container = null;
+
+container = createContainer();
+
 // Cycle thru all 10 items
 nodeList_scItems.forEach( (item) => {
     
@@ -14,8 +20,30 @@ nodeList_scItems.forEach( (item) => {
     
     // Assign new class to parent (item)
     item.classList.add( username_handle );
+    
+    addButtonTo( container, username, username_handle );
 
 });
+
+function createContainer(){
+  var div = document.createElement("div");
+  div.id = "users_who_posted";
+  htmlBody.appendChild(div);
+  return div;
+}
+
+function addButtonTo( parent_node, label ){
+  var btn = document.createElement("button"),
+      btn_label = document.createTextNode(label);
+  
+  btn.id="hi-there";
+  btn.appendChild( btn_label );
+  
+  if ( parent_node )
+    parent_node.appendChild(btn);
+  
+  return btn;
+}
 
 // Scroll page to get 10 more items. We grab the height of the entire and scroll by that amount.. 
 // intListHeight = nodeList_scItems.scrollHeight;
