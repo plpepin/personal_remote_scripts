@@ -21,7 +21,7 @@ nodeList_scItems.forEach( (item) => {
     // Assign new class to parent (item)
     item.classList.add( username_handle );
     
-    addButtonTo( container, username, username_handle );
+    addButtonTo( container, username_handle, username );
 
 });
 
