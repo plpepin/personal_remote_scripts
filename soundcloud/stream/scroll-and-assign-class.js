@@ -4,27 +4,38 @@ var node_html = document.documentElement,
 var htmlDoc = document.documentElement,
     htmlBody = document.querySelector('body'),
     container = null,
-    buttons_class = "sc-button sc-button-medium sc-button-responsive";
+    buttons_class = "sc-button sc-button-medium sc-button-responsive",
+    uniq_usr_btns = {};
 
 container = createContainer();
 
 // Cycle thru all 10 items
-nodeList_scItems.forEach( (item) => {
-    
-    // Get the user who posted current item (track) to the stream..
-    username = item.querySelector('.soundContext__usernameLink').text;
-    
-    // Create a classname using the user url page minus the '/' prefix 
-    username_handle = "user-" + item.querySelector('.g-avatar-badge-avatar-link').pathname.substring(1);
-    
-    //console.log("username_handle class", username_handle);
-    
-    // Assign new class to parent (item)
-    item.classList.add( username_handle );
-    
-    addButtonTo( container, username_handle, buttons_class, username );
 
-});
+function initOrUpdateUserButtons() {
+    nodeList_scItems.forEach( (item) => {
+
+        // Get the user who posted current item (track) to the stream..
+        username = item.querySelector('.soundContext__usernameLink').text;
+
+        // Create a classname using the user url page minus the '/' prefix 
+        username_handle = "user-" + item.querySelector('.g-avatar-badge-avatar-link').pathname.substring(1);
+
+        //console.log("username_handle class", username_handle);
+
+        // Assign new class to parent (item)
+        item.classList.add( username_handle );
+        
+        if( uniq_usr_btns.hasOwnProperty(username_handle) )
+        {
+            uniq_usr_btns[username_handle]++;
+        }
+        else {
+            uniq_usr_btns[username_handle] = 1;
+            addButtonTo( container, username_handle, buttons_class, username );
+        }
+
+    });
+}
 
 function createContainer(){
   var div = document.createElement("div");
@@ -66,3 +77,5 @@ function addButtonTo( parent_node, id, classname, label ){
 // intListHeight = nodeList_scItems.scrollHeight;
 // node_html.scrollBy(0, intListHeight)
 // returns integer
+
+initOrUpdateUserButtons();
