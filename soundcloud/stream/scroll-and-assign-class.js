@@ -34,8 +34,9 @@ function createContainer(){
 }
 
 function handleUserWhoPostedClickEvent(e){
-    var matching_items = document.querySelectorAll( "." + e.target.className );
-    console.log(matching_items);
+    var selector = "." + e.target.className;
+        //matching_items = document.querySelectorAll( "." + e.target.className );
+    console.log(selector);
     //this.classname.add("show");
     //matching_items.classname.add("show");
 }
