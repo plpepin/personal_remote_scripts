@@ -8,7 +8,7 @@ nodeList_scItems.forEach( (item) => {
     username = item.querySelector('.soundContext__usernameLink').text;
     
     // Create a classname using the user url page minus the '/' prefix 
-    username_handle = item.querySelector('.g-avatar-badge-avatar-link').pathname.substring(1);
+    username_handle = "user-" + item.querySelector('.g-avatar-badge-avatar-link').pathname.substring(1);
     
     console.log("username_handle class", username_handle);
     
