@@ -38,12 +38,9 @@ function handleUserWhoPostedClickEvent(e){
         matching_items = null;
     
     matching_items = document.querySelectorAll( selector );
-    console.log("button clicked");
-    console.dir(e);
-    console.dir(e.target);
-    console.log(selector);
-    //this.classname.add("show");
-    matching_items.classList.add("show");
+    matching_items.forEach(function(item){
+        item.classList.add("show");
+    });
 }
 
 function addButtonTo( parent_node, id, classname, label ){
