@@ -32,11 +32,11 @@ function createContainer(){
   return div;
 }
 
-function addButtonTo( parent_node, label ){
+function addButtonTo( parent_node, id, label ){
   var btn = document.createElement("button"),
       btn_label = document.createTextNode(label);
   
-  btn.id="hi-there";
+  btn.id=id;
   btn.appendChild( btn_label );
   
   if ( parent_node )
