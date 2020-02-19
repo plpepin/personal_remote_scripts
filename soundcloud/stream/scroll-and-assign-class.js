@@ -42,7 +42,7 @@ function handleUserWhoPostedClickEvent(e){
         item.classList.add("show");
     });
     document.querySelectorAll('.soundList__item:not('+selector+')').forEach(function(siblings){
-        item.classList.add("hide");
+        siblings.classList.add("hide");
     });
 }
 
