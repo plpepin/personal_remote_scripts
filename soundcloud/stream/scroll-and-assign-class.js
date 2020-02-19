@@ -36,6 +36,9 @@ function createContainer(){
 function handleUserWhoPostedClickEvent(e){
     var selector = "." + e.target.className;
         //matching_items = document.querySelectorAll( "." + e.target.className );
+    console.log("button clicked");
+    console.dir(e);
+    console.dir(e.target);
     console.log(selector);
     //this.classname.add("show");
     //matching_items.classname.add("show");
