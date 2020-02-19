@@ -17,7 +17,7 @@ nodeList_scItems.forEach( (item) => {
     // Create a classname using the user url page minus the '/' prefix 
     username_handle = "user-" + item.querySelector('.g-avatar-badge-avatar-link').pathname.substring(1);
     
-    console.log("username_handle class", username_handle);
+    //console.log("username_handle class", username_handle);
     
     // Assign new class to parent (item)
     item.classList.add( username_handle );
@@ -38,7 +38,7 @@ function addButtonTo( parent_node, id, classname, label ){
       btn_label = document.createTextNode(label);
   
   btn.id=id;
-  btn.class=class;
+  btn.class=classname;
   btn.appendChild( btn_label );
   
   if ( parent_node )
