@@ -41,6 +41,9 @@ function handleUserWhoPostedClickEvent(e){
     matching_items.forEach(function(item){
         item.classList.add("show");
     });
+    document.querySelectorAll('.soundList__item:not('+selector+')').forEach(function(siblings){
+        item.classList.add("hide");
+    });
 }
 
 function addButtonTo( parent_node, id, classname, label ){
