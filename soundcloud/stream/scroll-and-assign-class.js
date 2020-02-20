@@ -104,7 +104,7 @@ function addButtonTo( parent_node, id, classname, label ){
 
 function updateButton( parent_node, id, label ){
     var findDigit = new RegExp(/\d/),
-        elButton = document.getElementById(id).textContent,
+        elButton = document.getElementById(id),
         currentLabel = elButton.textContent,
         newAmount = undefined,
         newLabel = label;
