@@ -81,14 +81,18 @@ function handleUserWhoPostedClickEvent(e){
     var selector = "." + e.target.id,
         matching_items = null;
     
+    // Find all matching tracks..
     matching_items = document.querySelectorAll( selector );
     
-    // Hide all tracks
+    // Remove the loading sign..
+    document.querySelector('.lazyLoadingList .loading').remove()
+    
+    // Hide all tracks as a rule...
     document.querySelectorAll('.soundList__item:not('+selector+')').forEach(function(siblings){
         siblings.classList.add("hide");
     });
     
-    // Bring back the track
+    // Then, bring back the track
     matching_items.forEach(function(item){
         item.classList.remove("hide");
     });
