@@ -102,7 +102,7 @@ function addButtonTo( parent_node, id, classname, label ){
   return btn;
 }
 
-function updateButton( parent_node, id, label ){\
+function updateButton( parent_node, id, label ){
     var findDigit = new RegExp(/\d/),
         currentLabel = parent_node.getElementById(id).textContent,
         newAmount = undefined;
