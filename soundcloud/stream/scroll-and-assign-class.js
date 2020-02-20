@@ -14,7 +14,7 @@ if( !! document.querySelector('.stream') ) {
     var observerOptions = {
       childList: true,
       attributes: true,
-      subtree: false //Omit or set to false to observe only changes to the parent node.
+      subtree: true //Omit or set to false to observe only changes to the parent node.
     }
 
     var observer = new MutationObserver(callback);
@@ -35,6 +35,7 @@ function callback(mutationList, observer) {
               initOrUpdateUserButtons(true);
               console.log("lazyLoadingList");
               console.dir(mutation);
+              console.dir( document.querySelector('.loading') );
               console.count();
             }
         break;
