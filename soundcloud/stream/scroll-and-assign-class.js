@@ -25,7 +25,8 @@ function callback(mutationList, observer) {
         /* One or more children have been added to and/or removed
            from the tree; see mutation.addedNodes and
            mutation.removedNodes */
-            initOrUpdateUserButtons();
+            if ( mutation.target.classList.contains('lazyLoadingList') )
+                initOrUpdateUserButtons();
         break;
       case 'attributes':
         /* An attribute value changed on the element in
@@ -48,10 +49,7 @@ function initOrUpdateUserButtons() {
         // Create a classname using the user url page minus the '/' prefix 
         username_handle = "user-" + item.querySelector('.g-avatar-badge-avatar-link').pathname.substring(1);
 
-        //console.log("username_handle class", username_handle);
-
-        // Assign new class to parent (item)
-        item.classList.add( username_handle );
+        //console.log("username_handle class", username_handle)
         
         if( uniq_usr_btns.hasOwnProperty(username_handle) )
         {
@@ -59,8 +57,14 @@ function initOrUpdateUserButtons() {
             updateButton( container, username_handle, username );
         }
         else {
+            // First time we see this user..
             uniq_usr_btns[username_handle] = 1;
+            
+            // Create and add a button to the container..
             addButtonTo( container, username_handle, buttons_class, username );
+            
+            // Assign new class to parent (item)
+            item.classList.add( username_handle );
         }
 
     });
