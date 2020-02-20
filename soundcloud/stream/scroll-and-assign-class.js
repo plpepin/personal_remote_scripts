@@ -104,10 +104,12 @@ function createContainer(){
 
 function handleUserWhoPostedClickEvent(e){
     var tracks_selector = "." + e.target.id,
-        matching_items = null;
+        matching_items = null,
+        loader = document.querySelector('.lazyLoadingList .loading');
     
     // Remove the loading sign..
-    document.querySelector('.lazyLoadingList .loading').remove()
+    if ( loader )
+        document.querySelector('.lazyLoadingList .loading').remove()
     
     updateView( tracks_selector );
     
