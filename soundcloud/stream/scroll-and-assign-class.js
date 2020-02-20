@@ -7,16 +7,22 @@ var htmlDoc = document.documentElement,
     buttons_class = "sc-button sc-button-medium sc-button-responsive",
     uniq_usr_btns = {};
 
-container = createContainer();
+if( !! document.querySelector('.stream') ) {
 
-var observerOptions = {
-  childList: true,
-  attributes: true,
-  subtree: true //Omit or set to false to observe only changes to the parent node.
+    container = createContainer();
+
+    var observerOptions = {
+      childList: true,
+      attributes: true,
+      subtree: true //Omit or set to false to observe only changes to the parent node.
+    }
+
+    var observer = new MutationObserver(callback);
+    observer.observe(nodeList_scList, observerOptions);
+    
+    initOrUpdateUserButtons();
+    
 }
-
-var observer = new MutationObserver(callback);
-observer.observe(nodeList_scList, observerOptions);
 
 function callback(mutationList, observer) {
   mutationList.forEach((mutation) => {
@@ -156,5 +162,3 @@ function updateButton( parent_node, id, label ){
 // intListHeight = htmlColl_scItems.scrollHeight;
 // node_html.scrollBy(0, intListHeight)
 // returns integer
-
-initOrUpdateUserButtons();
