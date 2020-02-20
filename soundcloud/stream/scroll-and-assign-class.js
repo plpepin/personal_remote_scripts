@@ -56,6 +56,7 @@ function initOrUpdateUserButtons() {
         if( uniq_usr_btns.hasOwnProperty(username_handle) )
         {
             uniq_usr_btns[username_handle]++;
+            updateButton( container, username_handle, username );
         }
         else {
             uniq_usr_btns[username_handle] = 1;
@@ -87,7 +88,7 @@ function handleUserWhoPostedClickEvent(e){
 
 function addButtonTo( parent_node, id, classname, label ){
   var btn = document.createElement("button"),
-      btn_label = document.createTextNode(label);
+      btn_label = document.createTextNode(label+" (1)");
   
   btn.id=id;
   btn.class=classname;
@@ -99,6 +100,18 @@ function addButtonTo( parent_node, id, classname, label ){
     parent_node.appendChild(btn);
   
   return btn;
+}
+
+function updateButton( parent_node, id, label ){\
+    var findDigit = new RegExp(/\d/),
+        currentLabel = parent_node.getElementById(id).textContent,
+        newAmount = undefined;
+        newLabel = "";
+    
+    newAmount = Number( findDigit.exec( currentLabel )[0] )++;
+    newLabel = label + " (" + newAmount + ")";
+    
+    currentLabel = newLabel;
 }
 
 // Scroll page to get 10 more items. We grab the height of the entire and scroll by that amount.. 
