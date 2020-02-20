@@ -83,15 +83,22 @@ function initOrUpdateUserButtons(updating) {
     if ( updating ){
         
         // Get selector..
-        currentItemsShowing = document.querySelectorAll('.soundList__item:not(.hide)')[0].classList.value;
+        currentItemsShowing = document.querySelectorAll('.soundList__item:not(.hide)'); // Returns NodeList
         
-        currentItemsShowing.split(" ").filter(function(selector){
-            if ( selector.indexOf("user") != -1 )
-            return selector;
-        });
+        // Is there anything showing?
+        if( currentItemsShowing.length )
+        {
+          // We have tracks showing on the screen. Lets updateView()
+          currentItemsShowing = document.querySelectorAll('.soundList__item:not(.hide)')[0].classList.value;
         
-        // Refresh..
-        updateView( currentItemsShowing[0] );
+          currentItemsShowing.split(" ").filter(function(selector){
+              if ( selector.indexOf("user") != -1 )
+              return selector;
+          });
+
+          // Refresh..
+          updateView( currentItemsShowing[0] );  
+        }
     }
 }
 
