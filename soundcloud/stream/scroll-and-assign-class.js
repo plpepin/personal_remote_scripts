@@ -104,14 +104,15 @@ function addButtonTo( parent_node, id, classname, label ){
 
 function updateButton( parent_node, id, label ){
     var findDigit = new RegExp(/\d/),
-        currentLabel = document.getElementById(id).textContent,
+        elButton = document.getElementById(id).textContent,
+        currentLabel = elButton.textContent,
         newAmount = undefined,
         newLabel = label;
     
     newAmount = Number( findDigit.exec( currentLabel )[0] )+1;
     newLabel += " (" + newAmount + ")";
     
-    parent_node.getElementById(id).textContent = newLabel;
+    elButton.textContent = newLabel;
 }
 
 // Scroll page to get 10 more items. We grab the height of the entire and scroll by that amount.. 
