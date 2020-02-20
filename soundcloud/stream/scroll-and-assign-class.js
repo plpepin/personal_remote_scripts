@@ -32,11 +32,14 @@ function callback(mutationList, observer) {
            from the tree; see mutation.addedNodes and
            mutation.removedNodes */
             if ( mutation.target.classList.contains('lazyLoadingList') ){
-              initOrUpdateUserButtons(true);
-              console.log("lazyLoadingList");
-              console.dir(mutation);
-              console.dir( document.querySelector('.loading') );
-              console.count();
+              amountOfTracksInStream = document.querySelectorAll('.soundList__item').length;
+              if ( tracks != amountOfTracksInStream ) {
+                  initOrUpdateUserButtons(true);
+                  console.log("lazyLoadingList");
+                  console.dir(mutation);
+                  console.dir( document.querySelector('.loading') );
+                  console.count();
+              }
             }
         break;
       case 'attributes':
