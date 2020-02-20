@@ -25,8 +25,11 @@ function callback(mutationList, observer) {
         /* One or more children have been added to and/or removed
            from the tree; see mutation.addedNodes and
            mutation.removedNodes */
-            if ( mutation.target.classList.contains('lazyLoadingList') )
-                initOrUpdateUserButtons(true);
+            if ( mutation.target.classList.contains('lazyLoadingList') ){
+              initOrUpdateUserButtons(true);
+              console.log("hello");
+              console.count()
+            }
         break;
       case 'attributes':
         /* An attribute value changed on the element in
