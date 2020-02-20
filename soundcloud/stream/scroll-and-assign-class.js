@@ -56,7 +56,7 @@ function callback(mutationList, observer) {
 // Cycle thru all 10 items
 function initOrUpdateUserButtons(updating) {
     htmlColl_scItems = nodeList_scList.querySelectorAll('.soundList__item');
-    tracks_aware_of += htmlColl_scItems.length;
+    tracks_aware_of = htmlColl_scItems.length;
     htmlColl_scItems.forEach( (item) => {
 
         // Get the user who posted current item (track) to the stream..
