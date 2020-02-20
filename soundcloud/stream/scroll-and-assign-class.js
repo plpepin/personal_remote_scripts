@@ -14,7 +14,7 @@ if( !! document.querySelector('.stream') ) {
     var observerOptions = {
       childList: true,
       attributes: true,
-      subtree: true //Omit or set to false to observe only changes to the parent node.
+      subtree: false //Omit or set to false to observe only changes to the parent node.
     }
 
     var observer = new MutationObserver(callback);
