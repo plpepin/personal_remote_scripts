@@ -82,12 +82,17 @@ function handleUserWhoPostedClickEvent(e){
         matching_items = null;
     
     matching_items = document.querySelectorAll( selector );
-    matching_items.forEach(function(item){
-        item.classList.remove("hide");
-    });
+    
+    // Hide all tracks
     document.querySelectorAll('.soundList__item:not('+selector+')').forEach(function(siblings){
         siblings.classList.add("hide");
     });
+    
+    // Bring back the track
+    matching_items.forEach(function(item){
+        item.classList.remove("hide");
+    });
+    
 }
 
 function addButtonTo( parent_node, id, classname, label ){
