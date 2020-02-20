@@ -48,7 +48,9 @@ function initOrUpdateUserButtons() {
 
         // Create a classname using the user url page minus the '/' prefix 
         username_handle = "user-" + item.querySelector('.g-avatar-badge-avatar-link').pathname.substring(1);
-
+        
+        // Assign the classname to item (track)
+        item.classList.add( username_handle );
         //console.log("username_handle class", username_handle)
         
         if( uniq_usr_btns.hasOwnProperty(username_handle) )
@@ -62,9 +64,7 @@ function initOrUpdateUserButtons() {
             
             // Create and add a button to the container..
             addButtonTo( container, username_handle, buttons_class, username );
-            
-            // Assign new class to parent (item)
-            item.classList.add( username_handle );
+          
         }
 
     });
