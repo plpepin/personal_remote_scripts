@@ -79,8 +79,8 @@ function initOrUpdateUserButtons(updating) {
         currentItemsShowing = document.querySelectorAll('.soundList__item:not(.hide)')[0].classList.value;
         
         currentItemsShowing.split(" ").filter(function(selector){
-            if ( el.indexOf("user") != -1 )
-            return el;
+            if ( selector.indexOf("user") != -1 )
+            return selector;
         });
         
         // Refresh..
