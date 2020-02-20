@@ -26,7 +26,7 @@ function callback(mutationList, observer) {
            from the tree; see mutation.addedNodes and
            mutation.removedNodes */
             if ( mutation.target.classList.contains('lazyLoadingList') )
-                initOrUpdateUserButtons();
+                initOrUpdateUserButtons(true);
         break;
       case 'attributes':
         /* An attribute value changed on the element in
@@ -39,7 +39,7 @@ function callback(mutationList, observer) {
 }
 
 // Cycle thru all 10 items
-function initOrUpdateUserButtons() {
+function initOrUpdateUserButtons(updating) {
     htmlColl_scItems = nodeList_scList.querySelectorAll('.soundList__item');
     htmlColl_scItems.forEach( (item) => {
 
@@ -68,6 +68,20 @@ function initOrUpdateUserButtons() {
         }
 
     });
+    
+    if ( updating ){
+        
+        // Get selector..
+        currentItemsShowing = document.querySelectorAll('.soundList__item:not(.hide)')[0].classList.value;
+        
+        currentItemsShowing.split(" ").filter(function(selector){
+            if ( el.indexOf("user") != -1 )
+            return el;
+        });
+        
+        // Refresh..
+        updateView( currentItemsShowing[0] );
+    }
 }
 
 function createContainer(){
@@ -78,24 +92,30 @@ function createContainer(){
 }
 
 function handleUserWhoPostedClickEvent(e){
-    var selector = "." + e.target.id,
+    var tracks_selector = "." + e.target.id,
         matching_items = null;
-    
-    // Find all matching tracks..
-    matching_items = document.querySelectorAll( selector );
     
     // Remove the loading sign..
     document.querySelector('.lazyLoadingList .loading').remove()
     
+    updateView( tracks_selector );
+    
+}
+
+function updateView( tracks_selector ) {
+    
     // Hide all tracks as a rule...
-    document.querySelectorAll('.soundList__item:not('+selector+')').forEach(function(siblings){
+    document.querySelectorAll('.soundList__item:not('+tracks_selector+')').forEach(function(siblings){
         siblings.classList.add("hide");
     });
     
-    // Then, bring back the track
+    // Find all matching tracks..
+    matching_items = document.querySelectorAll( tracks_selector );
+    
+    // Then, bring back the track(s)
     matching_items.forEach(function(item){
         item.classList.remove("hide");
-    });
+    });   
     
 }
 
