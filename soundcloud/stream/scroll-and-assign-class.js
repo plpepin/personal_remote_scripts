@@ -5,6 +5,7 @@ var htmlDoc = document.documentElement,
     htmlBody = document.querySelector('body'),
     container = null,
     buttons_class = "sc-button sc-button-medium sc-button-responsive",
+    tracks_aware_of = 0,
     uniq_usr_btns = {};
 
 if( !! document.querySelector('.stream') ) {
@@ -33,7 +34,7 @@ function callback(mutationList, observer) {
            mutation.removedNodes */
             if ( mutation.target.classList.contains('lazyLoadingList') ){
               amountOfTracksInStream = document.querySelectorAll('.soundList__item').length;
-              if ( tracks != amountOfTracksInStream ) {
+              if ( tracks_aware_of != amountOfTracksInStream ) {
                   initOrUpdateUserButtons(true);
                   console.log("lazyLoadingList");
                   console.dir(mutation);
@@ -55,6 +56,7 @@ function callback(mutationList, observer) {
 // Cycle thru all 10 items
 function initOrUpdateUserButtons(updating) {
     htmlColl_scItems = nodeList_scList.querySelectorAll('.soundList__item');
+    tracks_aware_of = htmlColl_scItems.legnth;
     htmlColl_scItems.forEach( (item) => {
 
         // Get the user who posted current item (track) to the stream..
