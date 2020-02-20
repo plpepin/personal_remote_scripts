@@ -108,7 +108,7 @@ function updateButton( parent_node, id, label ){
         newAmount = undefined,
         newLabel = label;
     
-    newAmount = Number( findDigit.exec( currentLabel )[0] )++;
+    newAmount = Number( findDigit.exec( currentLabel )[0] )+1;
     newLabel += " (" + newAmount + ")";
     
     parent_node.getElementById(id).textContent = newLabel;
