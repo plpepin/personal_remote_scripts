@@ -27,8 +27,9 @@ function callback(mutationList, observer) {
            mutation.removedNodes */
             if ( mutation.target.classList.contains('lazyLoadingList') ){
               initOrUpdateUserButtons(true);
-              console.log("hello");
-              console.count()
+              console.log("lazyLoadingList");
+              console.dir(mutation);
+              console.count();
             }
         break;
       case 'attributes':
